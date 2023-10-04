@@ -1,0 +1,76 @@
+const mongoose = require("mongoose");
+const Schema = mongoose.Schema;
+
+const ManagerSchema = new Schema({
+  name: {
+    type: String,
+    required: true,
+  },
+
+  userName: {
+    type: String,
+    required: true,
+  },
+
+  email: {
+    type: String,
+    required: true,
+  },
+
+  phone_number: {
+    type: Number,
+    required: true,
+  },
+
+  address: {
+    type: String,
+    required: true,
+  },
+
+  NIC: {
+    type: String,
+    required: true,
+  },
+
+  DOB: {
+    type: Date,
+    reqired: true,
+  },
+
+  gender: {
+    type: String,
+    enum: ["Male", "Female"],
+    default: "Male",
+    required: true,
+  },
+
+  department: {
+    type: String,
+    enum: [
+      "Select",
+      "Finance",
+      "HumanResource",
+      "Catering",
+      "Tour",
+      "Resource",
+      "Inventory",
+    ],
+    default: "Select",
+    required: true,
+  },
+
+  password: {
+    type: String,
+    reqired: true,
+  },
+  permissionLevel: {
+    type: String,
+    required: true,
+    enum: ["ADMIN", "SUPPLIER", "CUSTOMER", "MANAGER"],
+    default: "MANAGER",
+  },
+});
+
+const Manager = mongoose.model("Manager", ManagerSchema);
+
+module.exports = { Manager };
